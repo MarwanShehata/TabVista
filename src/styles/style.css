@@ -92,7 +92,6 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  /* position: relative; */
 }
 /* Governing Styles */
 .topLeft,
@@ -128,7 +127,6 @@ body {
   flex-direction: column;
   align-items: center;
   max-width: fit-content;
-  /* margin: 0 auto; */
 }
 
 .app-insert,
@@ -191,10 +189,8 @@ a.remove-task {
 
 /* ////////////// */
 .topRight {
-  /* grid-row: 1; */
   grid-column: 2 / span 3;
   align-self: flex-start;
-  /* justify-content: flex-end; */
   align-items: flex-end;
 
   text-align: right;
@@ -203,7 +199,6 @@ a.remove-task {
 .topRight .weatherContainer {
   display: flex;
   align-items: center;
-  /* margin-top: 0.5rem; */
 }
 #weatherIcon {
   /* Positioning */
@@ -213,22 +208,6 @@ a.remove-task {
   background-size: cover;
   background-repeat: no-repeat;
   scale: 1.35;
-}
-
-.topRight .weatherContainer img {
-  /* margin-right: 0.5rem; */
-}
-
-.topRight .weatherDetails {
-  /* margin-top: 0.5rem; */
-}
-
-.topRight .weatherDetails dt {
-  /* font-weight: bold; */
-}
-
-.topRight .weatherDetails dd {
-  /* margin-left: 0.5rem; */
 }
 
 /* Center Section Styles */
@@ -253,12 +232,6 @@ a.remove-task {
   font-size: var(--fsz-48);
   font-weight: 500;
   text-wrap: nowrap;
-}
-
-/* Bottom Section Styles */
-.bottomLeft,
-.bottomRight,
-.bottomCenter {
 }
 
 .bottomLeft {
