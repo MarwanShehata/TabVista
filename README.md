@@ -30,11 +30,11 @@ To get started with this project, follow these steps:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/your-project-name.git
+git clone https://github.com/MarwanShehata/TabVista.git
 ```
 2. Navigate to the project folder and install dependencies:
 ```bash
-cd your-project-name
+cd TabVista
 npm install
 ```
 
