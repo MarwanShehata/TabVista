@@ -141,9 +141,10 @@ const userName = 'Marwan';
 
 // eslint-disable-next-line no-unused-vars
 const clock = new Clock(clockElement, mainTextElement, userName);
+
 /// ///////////////////
 class WeatherApp {
-  #API_KEY = '78210c390a3449e4c862299aa77ff25c';
+  #API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
   #city = document.querySelector('.city');
   #weather = document.querySelector('.weather');
   #feelsLikeElement = document.querySelector('.feelsLikeValue');
@@ -295,13 +296,8 @@ class QuoteFetcher {
 
 QuoteFetcher.init();
 ///////
-const API_DATA = {
-  APPLICATION_ID: '581258',
-  ACCESS_KEY: 'T100Vi8PriXsQfIo4x9dvM8sjnl5ElrQ9ynZ80oOU8Q',
-  SECRET_KEY: 'xDIZwFfMl4TXYLY8wAA9DZyS5xphgQfSKljj7OvZ1QU',
-};
 
-const UNSPLASH_API_ENDPOINT = `https://api.unsplash.com/photos/random/?query=nature&client_id=${API_DATA.ACCESS_KEY}&fm=jpg&fit=crop&w=1080&q=80&fit=max`;
+const UNSPLASH_API_ENDPOINT = `https://api.unsplash.com/photos/random/?query=nature&client_id=${import.meta.env.VITE_UNSPLASH_ACCESS_KEY}&fm=jpg&fit=crop&w=1080&q=80&fit=max`;
 const backgroundImage = document.querySelector('.container');
 /////////////
 const displayPhotoDetails = () => {
