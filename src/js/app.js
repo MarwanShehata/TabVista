@@ -294,7 +294,22 @@ const API_DATA = {
 
 const UNSPLASH_API_ENDPOINT = `https://api.unsplash.com/photos/random/?query=nature&client_id=${API_DATA.ACCESS_KEY}&fm=jpg&fit=crop&w=1080&q=80&fit=max`;
 const backgroundImage = document.querySelector('.container');
-
+/////////////
+const displayPhotoDetails = () => {
+  const storedPhotoInfo = localStorage.getItem('unsplashResponseObject');
+  if (!storedPhotoInfo) {
+    console.log('No photo details found in localStorage.');
+    return;
+  }
+  const photoInformation = JSON.parse(storedPhotoInfo);
+  const photographer = document.querySelector('.photographer');
+  const photoLink = document.querySelector('.photoLink');
+  console.log(photoInformation);
+  photoLink.href = photoInformation.imageURL;
+  photographer.textContent = photoInformation.photographer;
+  photographer.href = photoInformation.photographerLink;
+};
+/////////////
 const unsplashFetch = async () => {
   try {
     const response = await fetch(UNSPLASH_API_ENDPOINT, {
@@ -315,6 +330,7 @@ const unsplashFetch = async () => {
     };
     localStorage.setItem('unsplashResponseObject', JSON.stringify(photoInfo));
     setBackgroundImage(photoInfo.imageURL);
+    displayPhotoDetails();
   } catch (error) {
     console.error(error);
   }
@@ -331,6 +347,7 @@ if (!storedPhotoInfo) {
 } else {
   const photoInfo = JSON.parse(storedPhotoInfo);
   setBackgroundImage(photoInfo.imageURL);
+  displayPhotoDetails();
 }
 //////////////
 
@@ -361,26 +378,6 @@ function toggleVisibility() {
     humidityValue.style.display = 'none';
   }
 }
-////////////
-const displayPhotoDetails = () => {
-  const storedPhotoInfo = localStorage.getItem('unsplashResponseObject');
-  if (!storedPhotoInfo) {
-    console.log('No photo details found in localStorage.');
-    return;
-  }
-  const photoInformation = JSON.parse(storedPhotoInfo);
-  const photographer = document.querySelector('.photographer');
-  const photoLink = document.querySelector('.photoLink');
-  console.log(photoInformation);
-  photoLink.href = photoInformation.imageURL;
-  photographer.textContent = photoInformation.photographer;
-  photographer.href = photoInformation.photographerLink;
-};
-
-setTimeout(() => {
-  displayPhotoDetails();
-}, 1500);
-
 /////////////
 class App {
   #tasks;
