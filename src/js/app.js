@@ -295,7 +295,7 @@ class QuoteFetcher {
 }
 
 QuoteFetcher.init();
-///////
+////////
 
 const UNSPLASH_API_ENDPOINT = `https://api.unsplash.com/photos/random/?query=nature&client_id=${import.meta.env.VITE_UNSPLASH_ACCESS_KEY}&fm=jpg&fit=crop&w=1080&q=80&fit=max`;
 const backgroundImage = document.querySelector('.container');
