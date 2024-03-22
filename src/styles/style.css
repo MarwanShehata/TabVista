@@ -197,6 +197,7 @@ a.remove-task {
 .topRight .weatherContainer {
   display: flex;
   align-items: center;
+  margin-block-end: var(--space-7);
 }
 #weatherIcon {
   /* Positioning */
@@ -207,7 +208,13 @@ a.remove-task {
   background-repeat: no-repeat;
   scale: 1.35;
 }
-
+li[role='listitem'] {
+  margin-block: var(--space-7);
+  line-height: 1.8;
+}
+.hidden {
+  display: none;
+}
 /* Center Section Styles */
 .center {
   grid-column: 2;

@@ -211,6 +211,8 @@ class WeatherApp {
     const countryName = data.sys.country;
     const feelsLike = Math.floor(data.main.feels_like);
     const iconCode = data.weather[0].icon;
+    console.log(iconCode);
+
     const humidity = Math.floor(data.main.humidity);
     const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
@@ -223,7 +225,14 @@ class WeatherApp {
     this.#city.textContent = `${cityName}, ${countryName}`;
     this.#feelsLikeElement.textContent = `${feelsLike}°C`;
     this.#humidityElement.textContent = `${humidity}%`;
+
+    this.#feelsLikeElement.closest('li').classList.remove('hidden');
+    this.#humidityElement.closest('li').classList.remove('hidden');
+
     this.#weatherIcon.src = iconUrl;
+    this.#weatherIcon.alt = weatherDescription;
+    this.#weatherIcon.classList.remove('hidden');
+    icon;
   }
   #removeWeatherDataFromLocalStorage() {
     setTimeout(
