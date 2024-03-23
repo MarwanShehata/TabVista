@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/TabVista-WHejDj0P.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TabVista</title>
+    <script type="module" crossorigin src="/assets/index-lfpTcqok.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-XpPCsM2m.css">
+  </head>
+  <body class="container fade-in" role="application">
+    <nav class="topLeft" role="navigation" aria-label="Settings menu">
+      <section class="app-insert">
+        <input type="text" name="task" placeholder="Insert your task here..." />
+      </section>
+
+      <section class="app-list">
+        <ul></ul>
+      </section>
+    </nav>
+    <section class="topRight" role="region" aria-label="Weather Information">
+      <div class="city no-select pointer" aria-live="polite"></div>
+      <div class="weatherContainer no-select pointer">
+        <img id="weatherIcon" src="" alt="" />
+        <div class="weather" aria-live="polite"></div>
+      </div>
+      <section class="weatherDetails no-select" aria-labelledby="weather-info">
+        <ul role="list">
+          <li role="listitem">
+            <dt class="feelsLike hidden">Feels like</dt>
+            <dd class="feelsLikeValue hidden"></dd>
+          </li>
+          <li role="listitem">
+            <dt class="humidity hidden">Humidity</dt>
+            <dd class="humidityValue hidden"></dd>
+          </li>
+        </ul>
+      </section>
+    </section>
+    <section class="center" role="region" aria-label="Clock and Mantra">
+      <h1 class="clock no-select" aria-live="polite"></h1>
+      <h2 class="mantra no-select" aria-live="polite"></h2>
+      <form id="userForm" class="user-form">
+        <input
+          type="text"
+          id="firstName"
+          placeholder="Enter your first name"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    <aside
+      class="bottomLeft no-select"
+      role="complementary"
+      aria-label="Background Image Details"
+    >
+      <p class="fade-in imageDetails">
+        <a href="" target="_blank" rel="noopener noreferrer" class="photoLink"
+          >Photo</a
+        >
+        by
+        <a
+          href=""
+          target="_blank"
+          rel="noopener noreferrer"
+          class="photographer"
+        ></a>
+      </p>
+    </aside>
+    <aside
+      class="bottomCenter"
+      role="complementary"
+      aria-label="Inspirational Quote"
+    >
+      <blockquote class="quoteContainer">
+        <p id="quote"></p>
+        <cite class="quoteAuthor"></cite>
+      </blockquote>
+    </aside>
+    <aside
+      class="bottomRight no-select"
+      role="complementary"
+      aria-label="To Do List"
+    >
+      <!-- .bottomRight -->
+    </aside>
+
+  </body>
+</html>
