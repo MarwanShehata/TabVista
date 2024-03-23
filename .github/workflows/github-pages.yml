@@ -14,12 +14,13 @@ jobs:
       - name: Install and build
         run: |
           npm install
+          npm install vite --save-dev
           npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages  # Specify the branch to publish to
-        #   publish_dir: ./          # Change this to the root directory
+          publish_branch: main # Specify the branch to publish to
+          #   publish_dir: ./          # Change this to the root directory
           publish_dir: ./dist
