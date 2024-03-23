@@ -36,6 +36,7 @@ git clone https://github.com/MarwanShehata/TabVista.git
 ```bash
 cd TabVista
 npm install
+npm install vite
 ```
 
 ## Post-Installation Steps
