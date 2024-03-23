@@ -3,7 +3,6 @@
 ![screenshot](/public/TabVista.png)
 
 # Personal Dashboard Web App
-Ask me for the `.env` file to view it correctly
 
 Welcome to my personal dashboard web app, a simple yet engaging layout designed and developed by a passionate junior front-end web developer. This project showcases a well-structured dashboard with multiple blocks and a responsive design.
 
@@ -36,6 +35,7 @@ git clone https://github.com/MarwanShehata/TabVista.git
 ```bash
 cd TabVista
 npm install
+npm install vite
 ```
 
 ## Post-Installation Steps
