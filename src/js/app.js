@@ -44,17 +44,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const now = new Date();
     const hours = now.getHours();
     let message;
+    let greeting;
+    let name;
 
     if (hours >= 5 && hours < 12) {
-      message = `Good Morning, ${firstName}`;
+      greeting = `Good Morning, `;
     } else if (hours >= 12 && hours < 17) {
-      message = `Good Afternoon, ${firstName}`;
+      greeting = `Good Afternoon, `;
     } else if (hours >= 17 && hours < 20) {
-      message = `Good Evening, ${firstName}`;
+      greeting = `Good Evening, `;
     } else {
-      message = `Good Night, ${firstName}`;
+      greeting = `Good Night, `;
     }
-
+    name = firstName;
+    message = greeting + name;
     mantra.textContent = message;
   }
 
@@ -150,6 +153,8 @@ class WeatherApp {
   #feelsLikeElement = document.querySelector('.feelsLikeValue');
   #humidityElement = document.querySelector('.humidityValue');
   #weatherIcon = document.querySelector('#weatherIcon');
+  #weatherTemp = document.querySelector('.weatherTemp');
+  #weatherDescription = document.querySelector('.weatherDescription');
 
   static #getCoordinates() {
     return new Promise((resolve, reject) => {
@@ -222,7 +227,9 @@ class WeatherApp {
       (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
     );
 
-    this.#weather.textContent = `${temp}°C, ${capitalizedWeatherDescription}`;
+    // this.#weather.textContent = `${temp}°C, ${capitalizedWeatherDescription}`;
+    this.#weatherTemp.textContent = `${temp}°C,`;
+    this.#weatherDescription.textContent = `${capitalizedWeatherDescription}`;
     this.#city.textContent = `${cityName}, ${countryName}`;
     this.#feelsLikeElement.textContent = `${feelsLike}°C`;
     this.#humidityElement.textContent = `${humidity}%`;
@@ -233,7 +240,6 @@ class WeatherApp {
     this.#weatherIcon.src = iconUrl;
     this.#weatherIcon.alt = weatherDescription;
     this.#weatherIcon.classList.remove('hidden');
-    icon;
   }
   #removeWeatherDataFromLocalStorage() {
     setTimeout(
@@ -266,7 +272,7 @@ app.getWeather();
 /////////////
 class QuoteFetcher {
   // Private properties
-  #apiURL = 'https://api.quotable.io/random?maxLength=200';
+  #apiURL = 'https://api.quotable.io/random?maxLength=150';
   #quoteElement = document.querySelector('#quote');
   #authorElement = document.querySelector('.quoteAuthor');
   constructor() {
@@ -423,7 +429,8 @@ class App {
     const newTask = document.createElement('li');
     newTask.setAttribute('class', 'task');
     newTask.innerHTML =
-      task + '<a href="javascript:;" class="remove-task">remove</a>';
+      task +
+      '<a href="javascript:;" class="remove-task" id="remove">remove</a>';
     this.#tasks.appendChild(newTask);
   }
 

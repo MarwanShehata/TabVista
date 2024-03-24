@@ -9,9 +9,8 @@
   <body class="container fade-in" role="application">
     <nav class="topLeft" role="navigation" aria-label="Settings menu">
       <section class="app-insert">
-        <input type="text" name="task" placeholder="Insert your task here..." />
+        <input type="text" name="task" placeholder="Groceries..." />
       </section>
-
       <section class="app-list">
         <ul></ul>
       </section>
@@ -19,25 +18,31 @@
     <section class="topRight" role="region" aria-label="Weather Information">
       <div class="city no-select pointer" aria-live="polite"></div>
       <div class="weatherContainer no-select pointer">
-        <img id="weatherIcon" src="" alt="" />
-        <div class="weather" aria-live="polite"></div>
+        <div class="weather" aria-live="polite">
+          <img id="weatherIcon" src="" alt="" />
+          <span class="weatherTemp" id="weatherTemp"></span>
+        </div>
+        <span class="weatherDescription"></span>
       </div>
       <section class="weatherDetails no-select" aria-labelledby="weather-info">
         <ul role="list">
           <li role="listitem">
-            <dt class="feelsLike hidden">Feels like</dt>
             <dd class="feelsLikeValue hidden"></dd>
+            <dt class="feelsLike hidden">Feels like</dt>
           </li>
           <li role="listitem">
-            <dt class="humidity hidden">Humidity</dt>
             <dd class="humidityValue hidden"></dd>
+            <dt class="humidity hidden">Humidity</dt>
           </li>
         </ul>
       </section>
     </section>
     <section class="center" role="region" aria-label="Clock and Mantra">
       <h1 class="clock no-select" aria-live="polite"></h1>
-      <h2 class="mantra no-select" aria-live="polite"></h2>
+      <h2 class="mantra no-select" aria-live="polite">
+        <span id="greeting" class="greeting"></span>
+        <span class="name"></span>
+      </h2>
       <form id="userForm" class="user-form">
         <input
           type="text"
