@@ -29,7 +29,17 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     const firstName = document.getElementById('firstName').value;
     const email = document.getElementById('email').value;
+   
+    if (!firstName || firstName.length > 10 || /\s/.test(firstName)) {
+      alert('Please enter a valid first name (max 10 characters, no spaces).');
+      return;
+    }
 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
     localStorage.setItem('firstName', firstName);
     localStorage.setItem('email', email);
 
