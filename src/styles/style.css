@@ -376,8 +376,6 @@ form > *:active {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  /* font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif; */
-  /* font-size: 16px; */
   font-size: var(--step--2);
   font-weight: 700;
   line-height: 1.5;
@@ -410,7 +408,7 @@ form > input {
   max-width: 190px;
 }
 
-.input:active {
+form > input:active {
   box-shadow: 2px 2px 15px var(--accent-100) inset;
 }
 
