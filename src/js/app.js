@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     const firstName = document.getElementById('firstName').value;
     const email = document.getElementById('email').value;
-   
+
     if (!firstName || firstName.length > 10 || /\s/.test(firstName)) {
       alert('Please enter a valid first name (max 10 characters, no spaces).');
       return;
