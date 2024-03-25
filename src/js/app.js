@@ -4,7 +4,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   fadeIn(document.querySelector('.fade-in'));
 
-  const userForm = document.getElementById('userForm');
+  const userForm = document.querySelector('.userForm');
   const clock = document.querySelector('.clock');
   const mantra = document.querySelector('.mantra');
 
@@ -137,7 +137,7 @@ class Clock {
 const clockElement = document.querySelector('.clock');
 const mainTextElement = document.querySelector('.mantra');
 
-const userName = 'Marwan';
+let userName;
 /* Hardcoded, to be changed dynamically from input from users */
 /* Either a greeting or a mantra */
 /* That's why I put a general name for .mantra as mainTextElement */
@@ -227,8 +227,7 @@ class WeatherApp {
       (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
     );
 
-    // this.#weather.textContent = `${temp}°C, ${capitalizedWeatherDescription}`;
-    this.#weatherTemp.textContent = `${temp}°C,`;
+    this.#weatherTemp.textContent = `${temp}°C, `;
     this.#weatherDescription.textContent = `${capitalizedWeatherDescription}`;
     this.#city.textContent = `${cityName}, ${countryName}`;
     this.#feelsLikeElement.textContent = `${feelsLike}°C`;
@@ -272,7 +271,8 @@ app.getWeather();
 /////////////
 class QuoteFetcher {
   // Private properties
-  #apiURL = 'https://api.quotable.io/random?maxLength=150';
+  #quoteLength = 100;
+  #apiURL = `https://api.quotable.io/random?maxLength=${this.#quoteLength}`;
   #quoteElement = document.querySelector('#quote');
   #authorElement = document.querySelector('.quoteAuthor');
   constructor() {
