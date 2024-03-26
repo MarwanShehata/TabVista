@@ -1,6 +1,6 @@
 /* eslint max-classes-per-file: "off" */
 /* eslint-disable */
-let firstName;
+let firstNameLocalStorage;
 document.addEventListener('DOMContentLoaded', function () {
   fadeIn(document.querySelector('.fade-in'));
 
@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // added
   // Check if first name and email are already in local storage
-   firstName = localStorage.getItem('firstName');
+  firstNameLocalStorage = localStorage.getItem('firstName');
   const email = localStorage.getItem('email');
 
-  if (firstName && email) {
+  if (firstNameLocalStorage && email) {
     // If first name and email are already in local storage, show the clock and mantra
     clock.style.display = 'block';
-    updateMantra(firstName);
+    updateMantra(firstNameLocalStorage);
     mantra.style.display = 'block';
     userForm.style.display = 'none';
   } else {
@@ -28,12 +28,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   userForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    const firstName = document.getElementById('firstName').value;
+    const firstNameInputValue = document.getElementById('firstName').value;
     const email = document.getElementById('email').value;
 
     // validation
     const firstNameRegex = /^[a-zA-Z-']+$/;
-    if (!firstName || firstName.length > 10 || !firstNameRegex.test(firstName)) {
+    if (
+      !firstNameInputValue ||
+      firstNameInputValue.length > 10 ||
+      !firstNameRegex.test(firstNameInputValue)
+    ) {
       alert('Please enter a valid first name (max 10 characters, no spaces).');
       return;
     }
@@ -42,18 +46,19 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('Please enter a valid email address.');
       return;
     }
-    if (!emailRegex.test(email) || !firstNameRegex.test(firstName)) {
+    if (!emailRegex.test(email) || !firstNameRegex.test(firstNameInputValue)) {
       alert('Please enter a valid first name and email.');
       return;
     }
 
     ///
-    localStorage.setItem('firstName', firstName);
+    localStorage.setItem('firstName', firstNameInputValue);
     localStorage.setItem('email', email);
+    firstNameLocalStorage = firstNameInputValue; // Update firstNameLocalStorage with the new first name value, this should help with avoiding reverting the variable value back to `undefined`
 
     // Show the clock and mantra and remove the form after submission
     clock.style.display = 'block';
-    updateMantra(firstName);
+    updateMantra();
     mantra.style.display = 'block';
     // if there's firstName and email in local storage then remove userForm
     if (localStorage.getItem('firstName') && localStorage.getItem('email')) {
@@ -61,13 +66,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  function updateMantra(firstName) {
+  function updateMantra() {
     const now = new Date();
     const hours = now.getHours();
+    const firstName = localStorage.getItem('firstName');
+
+    if (!firstName) {
+      // Handle the case where firstName is not set
+      console.log(`firstName localStorage inside updateMantra() value:- `);
+      console.log(firstName);
+      return; // Exit the function early
+    }
+
     let message;
     let greeting;
-    let name;
-
     if (hours >= 5 && hours < 12) {
       greeting = `Good Morning, `;
     } else if (hours >= 12 && hours < 17) {
@@ -77,22 +89,13 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       greeting = `Good Night, `;
     }
-    name = firstName;
-    message = greeting + name;
+    message = greeting + firstName;
     mantra.textContent = message;
     userForm?.remove();
   }
 
   // Update the mantra text every hour
-
-  setInterval(
-    function () {
-      if (firstName) {
-        updateMantra(firstName);
-      }
-    },
-    60 * 60 * 1000, // 60 seconds * 60 minutes * 1000 milliseconds = 1 hour
-  );
+  setInterval(updateMantra, 60 * 60 * 1000);
 });
 
 //////////////////////////////////////
