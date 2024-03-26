@@ -1,6 +1,6 @@
 /* eslint max-classes-per-file: "off" */
 /* eslint-disable */
-
+let firstName;
 document.addEventListener('DOMContentLoaded', function () {
   fadeIn(document.querySelector('.fade-in'));
 
@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const clock = document.querySelector('.clock');
   const mantra = document.querySelector('.mantra');
 
+  // added
   // Check if first name and email are already in local storage
-  const firstName = localStorage.getItem('firstName');
+   firstName = localStorage.getItem('firstName');
   const email = localStorage.getItem('email');
 
   if (firstName && email) {
@@ -29,21 +30,24 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     const firstName = document.getElementById('firstName').value;
     const email = document.getElementById('email').value;
-    const firstNameRegex = /^[a-zA-Z]{1,10}$/;
-    if (!firstName || firstNameRegex.test(firstName) || firstName.length > 10) {
+
+    // validation
+    const firstNameRegex = /^[a-zA-Z-']+$/;
+    if (!firstName || firstName.length > 10 || !firstNameRegex.test(firstName)) {
       alert('Please enter a valid first name (max 10 characters, no spaces).');
       return;
     }
-
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) {
       alert('Please enter a valid email address.');
       return;
     }
     if (!emailRegex.test(email) || !firstNameRegex.test(firstName)) {
-      alert('Either your email address or first name are incorrect');
+      alert('Please enter a valid first name and email.');
       return;
     }
+
+    ///
     localStorage.setItem('firstName', firstName);
     localStorage.setItem('email', email);
 
@@ -51,7 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
     clock.style.display = 'block';
     updateMantra(firstName);
     mantra.style.display = 'block';
-    userForm.remove();
+    // if there's firstName and email in local storage then remove userForm
+    if (localStorage.getItem('firstName') && localStorage.getItem('email')) {
+      userForm.remove();
+    }
   });
 
   function updateMantra(firstName) {
@@ -73,17 +80,19 @@ document.addEventListener('DOMContentLoaded', function () {
     name = firstName;
     message = greeting + name;
     mantra.textContent = message;
+    userForm?.remove();
   }
 
   // Update the mantra text every hour
+
   setInterval(
     function () {
       if (firstName) {
         updateMantra(firstName);
       }
     },
-    60 * 60 * 1000,
-  ); // 60 seconds * 60 minutes * 1000 milliseconds = 1 hour
+    60 * 60 * 1000, // 60 seconds * 60 minutes * 1000 milliseconds = 1 hour
+  );
 });
 
 //////////////////////////////////////

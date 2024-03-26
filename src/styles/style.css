@@ -360,7 +360,6 @@ form > * {
   border: 1px red solid;
   height: 30px;
   background-color: #0a1307;
-  /* padding-inline: 40px; */
   border-radius: 3px;
 }
 form > *:hover,
